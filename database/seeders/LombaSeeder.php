@@ -493,9 +493,9 @@ class LombaSeeder extends Seeder
             // Pastikan URL poster mengikuti format storage
             if (isset($lomba['poster_url'])) {
                 $posterPath = $lomba['poster_url'];
-                if (!str_starts_with($posterPath, 'public/storage/posters/')) {
+                if (!str_starts_with($posterPath, 'storage/posters/')) {
                     $posterFileName = basename($posterPath);
-                    $lomba['poster_url'] = 'public/storage/posters/' . $posterFileName;
+                    $lomba['poster_url'] = 'storage/posters/' . $posterFileName;
                 }
             }
 
