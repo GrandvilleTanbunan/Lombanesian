@@ -16,14 +16,14 @@ class PenyelenggaraSeeder extends Seeder
         $penyelenggaras = [
             [
                 'nama' => 'Kementerian Pendidikan dan Kebudayaan',
-                'logo_url' => 'storage/penyelenggara/kemendikbud.png',
+                'logo_url' => 'images/penyelenggara/kemendikbud.png',
                 'tentang' => 'Kementerian Pendidikan dan Kebudayaan Republik Indonesia adalah kementerian dalam Pemerintah Indonesia yang menyelenggarakan urusan di bidang pendidikan dan kebudayaan.',
                 'website' => 'https://www.kemdikbud.go.id/',
                 'provinsi_id' => 11,
             ],
             [
                 'nama' => 'Petra Christian University',
-                'logo_url' => 'storage/penyelenggara/pcu.png',
+                'logo_url' => 'images/penyelenggara/pcu.png',
                 'tentang' => "Universitas Kristen Petra adalah tempat di mana pemimpin-pemimpin sosial global dibentuk dan ditempa berlandaskan nilai-nilai kristiani. Kami mengundangmu untuk menimba ilmu di universitas yang peduli dan global, untuk belajar di bawah staf pengajar yang teruji dan bergabung dengan para mahasiswa dengan visi yang sama—membawa dampak bagi dunia.
 
 Meningkatkan KREDIBILITAS UK Petra menjadi perguruan tinggi kelas dunia.
@@ -42,7 +42,7 @@ Membangun CIVILITAS kehidupan berbangsa dan bernegara di UK Petra dalam rangka p
             ],
             [
                 'nama' => 'Universitas Indonesia',
-                'logo_url' => 'storage/penyelenggara/ui.png',
+                'logo_url' => 'images/penyelenggara/ui.png',
                 'tentang' => 'UI adalah salah satu universitas riset atau institusi akademik terkemuka di dunia yang terus mengejar pencapaian tertinggi dalam hal penemuan, pengembangan dan difusi pengetahuan secara regional dan global.
 
 Dengan prestasi yang terus diraihnya UI berada di peringkat kampus terbaik di Indonesia berdasarkan penilaian Lembaga pemeringkatan dunia.
@@ -55,14 +55,14 @@ UI terus bekerjasama aktif dalam jaringan internasional dengan banyak perguruan 
             ],
             [
                 'nama' => 'Institut Teknologi Bandung',
-                'logo_url' => 'storage/penyelenggara/itb.png',
+                'logo_url' => 'images/penyelenggara/itb.png',
                 'tentang' => 'Institut Teknologi Bandung (ITB) merupakan sekolah tinggi teknik pertama di Indonesia yang didirikan pada tanggal 3 Juli 1920 sebagai de Technische Hoogeschool te Bandoeng (TH). Tanggal 2 Maret 1959 diresmikan sebagai ITB dengan misi pengabdian ilmu pengetahuan dan teknologi untuk memajukan Indonesia. ITB hadir untuk mengoptimalkan pembangunan bangsa yang maju dan bermartabat.',
                 'website' => 'https://itb.ac.id/',
                 'provinsi_id' => 12, // Jawa Barat
             ],
             [
                 'nama' => 'Universitas Gadjah Mada',
-                'logo_url' => 'storage/penyelenggara/ugm.png',
+                'logo_url' => 'images/penyelenggara/ugm.png',
                 'tentang' => 'Universitas Gadjah Mada lahir dari kancah perjuangan revolusi kemerdekaan bangsa Indonesia. Didirikan pada periode awal kemerdekaan, UGM didaulat sebagai Balai Nasional Ilmu Pengetahuan dan Kebudayaan bagi penyelenggaraan pendidikan tinggi nasional.
 
 Berdiri dengan nama “Universitas Negeri Gadjah Mada”, perguruan tinggi ini merupakan gabungan dari beberapa sekolah tinggi yang telah lebih dulu didirikan, di antaranya Balai Perguruan Tinggi Gadjah Mada, Sekolah Tinggi Teknik, dan Akademi Ilmu Politik yang terletak di Yogyakarta, Balai Pendidikan Ahli Hukum di Solo, serta Perguruan Tinggi Kedokteran Bagian Praklinis di Klaten, yang disahkan dengan Peraturan Pemerintah No. 23 Tahun 1949 tentang Peraturan Penggabungan Perguruan Tinggi menjadi Universiteit.',
@@ -71,7 +71,7 @@ Berdiri dengan nama “Universitas Negeri Gadjah Mada”, perguruan tinggi ini m
             ],
             [
                 'nama' => 'Telkom Indonesia',
-                'logo_url' => 'storage/penyelenggara/telkom.png',
+                'logo_url' => 'images/penyelenggara/telkom.png',
                 'tentang' => 'PT Telkom Indonesia (Persero) Tbk (Telkom) adalah badan usaha milik negara (BUMN) yang bergerak di bidang layanan teknologi informasi dan komunikasi serta telekomunikasi digital di Indonesia.
 
 Pemilik mayoritas saham Telkom adalah pemerintah Republik Indonesia dengan kepemilikan sebesar 52,09 %. Sementara sisa kepemilikan saham sebesar 47,91 % dipegang oleh publik. Telkom memiliki 12 anak perusahaan atau subsidiary yang bergerak di berbagai sektor dan memberikan dampak positif baik untuk investor maupun rakyat Indonesia.
