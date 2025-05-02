@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <!-- Logo -->
         <a href="{{ url('/') }}" class="flex items-center">
-            <img src="{{ asset('images/logo.png') }}" alt="Lombanesia Logo" class="h-10 mr-2">
+            <img src="{{ asset('images/logo.PNG') }}" alt="Lombanesia Logo" class="h-10 mr-2">
             <span class="text-blue-600 text-2xl font-bold">Lombanesia</span>
         </a>
 
