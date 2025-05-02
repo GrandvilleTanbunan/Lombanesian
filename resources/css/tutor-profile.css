@@ -1,0 +1,190 @@
+/* CSS tambahan untuk halaman profile mentor */
+
+/* Efek hover pada jadwal */
+.border-l-4 {
+    transition: all 0.3s ease;
+}
+
+.border-l-4:hover {
+    background-color: #f9fafb;
+}
+
+/* Animasi badge tersedia */
+.schedule-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Styling untuk kalendar */
+.calendar-container {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.calendar-container button:hover {
+    background-color: #eef2ff;
+    color: #4f46e5;
+}
+
+/* Kustom styling untuk hari dengan jadwal */
+.calendar-container .group:hover .w-9.h-9 {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Styling untuk expanded lomba description */
+.expanded-desc {
+    position: relative;
+    background-color: #f9fafb;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.expanded-desc::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #f9fafb;
+}
+
+/* Filter button styling */
+.filter-btn.active {
+    position: relative;
+    font-weight: 500;
+}
+
+.filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+}
+
+/* Styling untuk prestasi mentor */
+.fa-trophy {
+    position: relative;
+}
+
+.fa-trophy::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    background-color: rgba(245, 158, 11, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Styling untuk judul jadwal */
+#jadwal h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+#jadwal h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, #3b82f6, #93c5fd);
+    border-radius: 3px;
+}
+
+/* Styling untuk highlight saat memilih tanggal di kalender */
+.highlight-date {
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-date::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dbeafe;
+    z-index: -1;
+    border-radius: inherit;
+    animation: highlightFade 2s forwards;
+}
+
+@keyframes highlightFade {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Tooltip saat hover pada jadwal */
+.schedule-tooltip {
+    position: relative;
+}
+
+.schedule-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e40af;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+    margin-bottom: 5px;
+}
+
+.schedule-tooltip:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1e40af transparent transparent transparent;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Styling untuk profile section */
+.profile-section {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.profile-section:hover {
+    transform: translateY(-5px);
+}
