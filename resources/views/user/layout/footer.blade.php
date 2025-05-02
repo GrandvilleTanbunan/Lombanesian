@@ -3,7 +3,7 @@
         <div class="flex flex-col items-center mb-6 rounded-t-3xl">
             <!-- Logo -->
             <div class="flex items-center mb-4">
-                <img src="{{ asset('images/logo.png') }}" alt="Lombanesia Logo" class="h-10 mr-2">
+                <img src="{{ asset('images/logo.PNG') }}" alt="Lombanesia Logo" class="h-10 mr-2">
                 <span class="text-white text-2xl font-bold">Lombanesia</span>
             </div>
 
