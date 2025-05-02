@@ -57,7 +57,6 @@ class LombaSeeder extends Seeder
                 'provinsi_id' => 11, // DKI Jakarta
                 'kategori' => [1],
                 'link_pendaftaran'=> null, // SD
-                'link_pendaftaran'=> null
             ],
             [
                 'nama' => 'Kompetisi Business Plan',
@@ -94,8 +93,8 @@ class LombaSeeder extends Seeder
                 'jenis_lomba' => 0,
                 'penyelenggara_id' => 2, // UI
                 'provinsi_id' => 11, // DKI Jakarta
-                'kategori' => [4,
-                'link_pendaftaran'=> null,5], // Mahasiswa, Umum
+                'kategori' => [4,5],
+                'link_pendaftaran'=> null, // Mahasiswa, Umum
             ],
             [
                 'nama' => 'Olimpiade Kimia SMA',
@@ -132,8 +131,8 @@ class LombaSeeder extends Seeder
                 'jenis_lomba' => 1,
                 'penyelenggara_id' => 2, // UI
                 'provinsi_id' => 11, // DKI Jakarta
-                'kategori' => [3,
-                'link_pendaftaran'=> null,4, 5], // SMA, Mahasiswa, Umum
+                'kategori' => [3,4, 5]
+                'link_pendaftaran'=> null, // SMA, Mahasiswa, Umum
             ],
             [
                 'nama' => 'Kompetisi Keamanan Siber',
