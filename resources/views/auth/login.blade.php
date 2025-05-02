@@ -131,7 +131,7 @@
             <!-- Brand Section -->
             <div class="auth-brand-section relative">
                 <div class="brand-logo">
-                    <img src="{{ asset('images/logo.png') }}" alt="Lombanesia Logo" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/logo.PNG') }}" alt="Lombanesia Logo" class="w-full h-full object-contain">
                 </div>
                 <h2 class="text-3xl font-bold mb-2">Lombanesia</h2>
                 <p class="text-blue-100 text-sm">Platform Lomba Terlengkap</p>
