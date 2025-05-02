@@ -246,8 +246,8 @@ class LombaSeeder extends Seeder
                 'jenis_lomba' => 0,
                 'penyelenggara_id' => 4, // UGM
                 'provinsi_id' => 14, // DIY
-                'kategori' => [3,
-                'link_pendaftaran'=> null,4], // SMA, Mahasiswa
+                'kategori' => [3,4]
+                'link_pendaftaran'=> null, // SMA, Mahasiswa
             ],
 
             // 15 additional competitions
