@@ -70,6 +70,17 @@
                             </select>
                         </div>
 
+                        <!-- Event Type (Online/Offline) -->
+                        <div>
+                            <label for="event-type" class="block text-sm font-medium text-gray-700 mb-1">Format Lomba</label>
+                            <select id="event-type" name="event_type"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white">
+                                <option value="">Semua Format</option>
+                                <option value="1" {{ request('event_type') == '1' ? 'selected' : '' }}>Online</option>
+                                <option value="0" {{ request('event_type') == '0' ? 'selected' : '' }}>Offline</option>
+                            </select>
+                        </div>
+
                         <!-- Price Range -->
                         <div>
                             <label for="price-range" class="block text-sm font-medium text-gray-700 mb-1">Kisaran Harga</label>
@@ -90,7 +101,9 @@
                             <input type="date" id="start-date" name="start_date" value="{{ request('start_date') }}"
                                 class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
+                    </div>
 
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
                         <!-- Sort By -->
                         <div>
                             <label for="sort-by" class="block text-sm font-medium text-gray-700 mb-1">Urutkan
@@ -157,6 +170,15 @@
                         <div class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm flex items-center">
                             Peserta: {{ $activeFilters['participant_type']['name'] }}
                             <a href="{{ route('lomba.index', array_merge(request()->except('participant_type'))) }}" class="ml-2 text-blue-400 hover:text-blue-600">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                    @endif
+
+                    @if (isset($activeFilters['event_type']))
+                        <div class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm flex items-center">
+                            Format: {{ $activeFilters['event_type']['label'] }}
+                            <a href="{{ route('lomba.index', array_merge(request()->except('event_type'))) }}" class="ml-2 text-blue-400 hover:text-blue-600">
                                 <i class="fas fa-times"></i>
                             </a>
                         </div>
@@ -236,6 +258,12 @@
 
                             <!-- Info Items dengan spacing yang lebih lega -->
                             <div class="space-y-3 text-l mt-2">
+                                <!-- Event Type (Online/Offline) -->
+                                <div class="flex items-center">
+                                    <i class="fas {{ $lomba->jenis_lomba == 1 ? 'fa-globe' : 'fa-map-marker-alt' }} w-10 text-xl" style="color: #5270ff"></i>
+                                    <span class='text-black'>{{ $lomba->jenis_lomba == 1 ? 'Online' : 'Offline' }}</span>
+                                </div>
+
                                 <div class="flex items-center">
                                     <i class="fas fa-user-graduate w-10 text-xl" style="color: #5270ff"></i>
                                     <span
@@ -255,77 +283,81 @@
                                         </div>
                                     </div>
                                 @elseif($lomba->biaya_pendaftaran_individu > 0)
-                                    <div class="flex items-center">
-                                        <i class="fas fa-money-bill-wave w-10 text-xl" style="color: #5270ff"></i>
-                                        <span class='text-black'>Individu: Rp
-                                            {{ number_format($lomba->biaya_pendaftaran_individu, 0, ',', '.') }}</span>
-                                    </div>
-                                @elseif($lomba->biaya_pendaftaran_tim > 0)
-                                    <div class="flex items-center">
-                                        <i class="fas fa-money-bill-wave w-10 text-xl" style="color: #5270ff"></i>
-                                        <span class='text-black'>Tim: Rp
-                                            {{ number_format($lomba->biaya_pendaftaran_tim, 0, ',', '.') }}</span>
-                                    </div>
-                                @else
-                                    <div class="flex items-center">
-                                        <i class="fas fa-money-bill-wave w-10 text-xl" style="color: #5270ff"></i>
-                                        <span class='text-black'>Gratis</span>
-                                    </div>
-                                @endif
                                 <div class="flex items-center">
-                                    <i class="fas fa-map-marker-alt w-10 text-xl" style="color: #5270ff"></i>
-                                    <span class='text-black'>{{ $lomba->provinsi->nama }}</span>
+                                    <i class="fas fa-money-bill-wave w-10 text-xl" style="color: #5270ff"></i>
+                                    <span class='text-black'>Individu: Rp
+                                        {{ number_format($lomba->biaya_pendaftaran_individu, 0, ',', '.') }}</span>
                                 </div>
+                            @elseif($lomba->biaya_pendaftaran_tim > 0)
                                 <div class="flex items-center">
-                                    <i class="fas fa-calendar w-10 text-xl" style="color: #5270ff"></i>
-                                    <span class='text-black'>{{ $lomba->tanggal_mulai->format('j F Y') }}</span>
+                                    <i class="fas fa-money-bill-wave w-10 text-xl" style="color: #5270ff"></i>
+                                    <span class='text-black'>Tim: Rp
+                                        {{ number_format($lomba->biaya_pendaftaran_tim, 0, ',', '.') }}</span>
                                 </div>
+                            @else
+                                <div class="flex items-center">
+                                    <i class="fas fa-money-bill-wave w-10 text-xl" style="color: #5270ff"></i>
+                                    <span class='text-black'>Gratis</span>
+                                </div>
+                            @endif
+
+                            @if($lomba->jenis_lomba == 0)
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt w-10 text-xl" style="color: #5270ff"></i>
+                                <span class='text-black'>{{ $lomba->provinsi->nama }}</span>
+                            </div>
+                            @endif
+
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar w-10 text-xl" style="color: #5270ff"></i>
+                                <span class='text-black'>{{ $lomba->tanggal_mulai->format('j F Y') }}</span>
                             </div>
                         </div>
-                        <!-- View Details Button selalu di bawah dengan margin yang lebih besar -->
-                        <div class="absolute bottom-6 left-4 right-4">
-                            <a href="{{ route('lomba.detail', $lomba->id) }}"
-                                class="block w-full py-3 text-center text-white font-medium bg-[#5270ff] border border-[#5270ff] rounded-3xl hover:bg-[#4560e6] hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                                More Detail <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
                     </div>
-                @endforeach
-            </div>
-
-            <!-- Empty State -->
-            @if ($lombas->isEmpty())
-                <div class="text-center py-20">
-                    <i class="fas fa-trophy text-6xl text-gray-300 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-600 mb-2">Tidak ada lomba yang ditemukan</h3>
-                    <p class="text-gray-500 mb-6">Coba ubah filter pencarian Anda untuk menemukan lomba lainnya</p>
-                    <a href="{{ route('lomba.index') }}" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                        Reset Filter
-                    </a>
+                    <!-- View Details Button selalu di bawah dengan margin yang lebih besar -->
+                    <div class="absolute bottom-6 left-4 right-4">
+                        <a href="{{ route('lomba.detail', $lomba->id) }}"
+                            class="block w-full py-3 text-center text-white font-medium bg-[#5270ff] border border-[#5270ff] rounded-3xl hover:bg-[#4560e6] hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                            More Detail <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
                 </div>
-            @endif
-
-            <!-- Pagination -->
-            <div class="mt-10 flex justify-center">
-                {{ $lombas->links() }}
-            </div>
+            @endforeach
         </div>
-    </section>
+
+        <!-- Empty State -->
+        @if ($lombas->isEmpty())
+            <div class="text-center py-20">
+                <i class="fas fa-trophy text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">Tidak ada lomba yang ditemukan</h3>
+                <p class="text-gray-500 mb-6">Coba ubah filter pencarian Anda untuk menemukan lomba lainnya</p>
+                <a href="{{ route('lomba.index') }}" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    Reset Filter
+                </a>
+            </div>
+        @endif
+
+        <!-- Pagination -->
+        <div class="mt-10 flex justify-center">
+            {{ $lombas->links() }}
+        </div>
+    </div>
+</section>
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            // Auto-submit form when certain filters change
-            $('#sort-by').change(function() {
-                $('#filter-form').submit();
-            });
-
-            // Bookmark button functionality (you can expand this)
-            $('.bookmark-btn').click(function(e) {
-                e.preventDefault();
-                $(this).find('i').toggleClass('far fas');
-            });
+<script>
+    $(document).ready(function() {
+        // Auto-submit form when certain filters change
+        $('#sort-by, #event-type').change(function() {
+            $('#filter-form').submit();
         });
-    </script>
+
+        // Bookmark button functionality (you can expand this)
+        $('.bookmark-btn').click(function(e) {
+            e.preventDefault();
+            $(this).find('i').toggleClass('far fas');
+        });
+    });
+</script>
 @endpush

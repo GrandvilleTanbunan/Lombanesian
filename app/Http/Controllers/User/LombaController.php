@@ -28,6 +28,7 @@ class LombaController extends Controller
         $priceRange = $request->input('price_range');
         $startDate = $request->input('start_date');
         $sortBy = $request->input('sort_by', 'latest');
+        $eventType = $request->input('event_type'); // New parameter for online/offline filter
 
         // Base query
         $query = Lomba::with([
@@ -62,6 +63,11 @@ class LombaController extends Controller
             $query->whereHas('pesertaKategori', function($q) use ($participantTypeId) {
                 $q->where('peserta_kategoris.id', $participantTypeId);
             });
+        }
+
+        // Apply event type filter (online/offline)
+        if ($eventType !== null && $eventType !== '') {
+            $query->where('jenis_lomba', $eventType);
         }
 
         // Apply price range filter
@@ -193,6 +199,18 @@ class LombaController extends Controller
             }
         }
 
+        // Add event type to active filters
+        if ($eventType !== null && $eventType !== '') {
+            $eventTypeLabels = [
+                '1' => 'Online',
+                '0' => 'Offline'
+            ];
+            $activeFilters['event_type'] = [
+                'value' => $eventType,
+                'label' => $eventTypeLabels[$eventType] ?? ''
+            ];
+        }
+
         if ($priceRange) {
             $priceRangeLabels = [
                 'free' => 'Gratis',
@@ -224,7 +242,8 @@ class LombaController extends Controller
             'participantTypeId',
             'priceRange',
             'startDate',
-            'sortBy'
+            'sortBy',
+            'eventType' // Add eventType to compact
         ));
     }
 
